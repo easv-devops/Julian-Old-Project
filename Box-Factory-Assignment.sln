@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Box-Factory-Assignment", "Box-Factory-Assignment.csproj", "{E63D0C36-9445-43E3-8A45-E99E5AEBD41F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{05B00F33-AD35-4752-A1DE-5B2C6B8F6EE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "service", "service\service.csproj", "{95973C55-F671-44D7-A643-411D457F5969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infrastructure", "infrastructure\infrastructure.csproj", "{E780E783-0031-4693-B443-E457A5551167}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +12,17 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E63D0C36-9445-43E3-8A45-E99E5AEBD41F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E63D0C36-9445-43E3-8A45-E99E5AEBD41F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E63D0C36-9445-43E3-8A45-E99E5AEBD41F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E63D0C36-9445-43E3-8A45-E99E5AEBD41F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B00F33-AD35-4752-A1DE-5B2C6B8F6EE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B00F33-AD35-4752-A1DE-5B2C6B8F6EE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B00F33-AD35-4752-A1DE-5B2C6B8F6EE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B00F33-AD35-4752-A1DE-5B2C6B8F6EE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95973C55-F671-44D7-A643-411D457F5969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95973C55-F671-44D7-A643-411D457F5969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95973C55-F671-44D7-A643-411D457F5969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95973C55-F671-44D7-A643-411D457F5969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E780E783-0031-4693-B443-E457A5551167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E780E783-0031-4693-B443-E457A5551167}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E780E783-0031-4693-B443-E457A5551167}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E780E783-0031-4693-B443-E457A5551167}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
