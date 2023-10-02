@@ -13,10 +13,13 @@ public class BoxController : ControllerBase
     {
         _service = service;
     }
+    
+    [Route("api/boxes")]
+    [HttpPost]
     public Box CreateBox([FromBody] Box box)
     {
     
-    return _service.CreateBox(box);
+        return _service.CreateBox(box);
     }
   
     [Route("/api/boxes{boxid}")]
