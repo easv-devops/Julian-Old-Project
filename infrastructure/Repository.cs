@@ -1,4 +1,5 @@
-﻿using Dapper;
+﻿using System.Collections.Generic;
+using Dapper;
 
 namespace infrastructure;
 
@@ -47,7 +48,7 @@ public class Repository
             return conn.Execute(sql, new { boxId }) == 1;
         }
     }
-
+    
     public IEnumerable<Box> GetAllBoxes()
     {
         var sql = $@"SELECT * FROM boxes;";
