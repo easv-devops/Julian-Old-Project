@@ -24,9 +24,9 @@ public class BoxController : ControllerBase
   
     [Route("/api/boxes{boxid}")]
     [HttpDelete]
-    public bool DeleteBox([FromRoute] Box box)
+    public bool DeleteBox([FromRoute] int id)
     {
-        return _service.DeleteBox(box.Id);
+        return _service.DeleteBox(id);
     }
   
     [Route("/api/boxes{boxid}")]
