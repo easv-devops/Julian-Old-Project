@@ -7,7 +7,7 @@ public class Repository
 {
     public Box AddBox(Box box)
     {
-        var sql = $@"INSERT INTO boxes(width, length, height, volume, material, inventory_count, price)
+        var sql = $@"INSERT INTO tables.boxes(width, length, height, volume, material, inventory_count, price)
                         VALUES(@width, @length, @height, @volume, @material, @inventorycount, @price)
                         RETURNING
                         id as {nameof(Box.Id)},
@@ -31,7 +31,7 @@ public class Repository
 
     public Box GetBoxById(int boxId)
     {
-        var sql = $@"SELECT * FROM boxes WHERE id = @id;";
+        var sql = $@"SELECT * FROM tables.boxes WHERE id = @id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
@@ -41,7 +41,7 @@ public class Repository
 
     public bool DeleteBoxById(int boxId)
     {
-        var sql = $@"DELETE FROM boxes WHERE id = @id;";
+        var sql = $@"DELETE FROM tables.boxes WHERE id = @id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
@@ -51,7 +51,7 @@ public class Repository
     
     public IEnumerable<Box> GetAllBoxes()
     {
-        var sql = $@"SELECT * FROM boxes;";
+        var sql = $@"SELECT * FROM tables.boxes;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
@@ -61,7 +61,7 @@ public class Repository
 
     public Box UpdateBox(Box box)
     {
-        var sql = $@"UPDATE boxes
+        var sql = $@"UPDATE tables.boxes
                         SET width=@width, length=@length, height=@height, volume=@volume,
                             material=@material, inventory_count=@inventorycount, price=@price 
                         WHERE id=@id
@@ -87,7 +87,7 @@ public class Repository
 
     public IEnumerable<Box> SearchForBox(string query)
     {
-        var sql = $@"SELECT * FROM boxes 
+        var sql = $@"SELECT * FROM tables.boxes 
                         WHERE LOWER(material) LIKE '%' || @query || '%'
                         ORDER BY id;";
 
