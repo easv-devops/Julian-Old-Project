@@ -1,1 +1,10 @@
 .idea
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+api/obj/
+api/bin/
+service/obj/
+service/bin/
