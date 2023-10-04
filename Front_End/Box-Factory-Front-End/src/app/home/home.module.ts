@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
-
 import { HomePageRoutingModule } from './home-routing.module';
 import {BoxComponent} from "../box/box.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {CreateBoxComponent} from "../create-box/create-box.component";
 
 
 
@@ -16,7 +16,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
+    HttpClientModule
   ],
-  declarations: [HomePage, BoxComponent]
+  declarations: [HomePage, BoxComponent, CreateBoxComponent]
 })
 export class HomePageModule {}
