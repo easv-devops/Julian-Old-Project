@@ -22,14 +22,14 @@ public class BoxController : ControllerBase
         return _service.CreateBox(box);
     }
   
-    [Route("/api/boxes{boxid}")]
+    [Route("/api/boxes/{boxid}")]
     [HttpDelete]
-    public bool DeleteBox([FromRoute] int id)
+    public bool DeleteBox([FromRoute] int boxid)
     {
-        return _service.DeleteBox(id);
+        return _service.DeleteBox(boxid);
     }
   
-    [Route("/api/boxes{boxid}")]
+    [Route("/api/boxes/{boxid}")]
     [HttpPut]
     public Box EditBox([FromBody] Box box)
     {
@@ -42,7 +42,7 @@ public class BoxController : ControllerBase
     {
         return _service.GetAllBoxes();
     }
-    [Route("/api/boxes{boxid}")]
+    [Route("/api/boxes/{boxid}")]
     [HttpGet]
     public Box GetBox([FromRoute]Box box)
     {
