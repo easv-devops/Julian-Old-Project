@@ -1,20 +1,20 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-avatar slot="start">
+      <ion-img src="https://cdn-icons-png.flaticon.com/512/1554/1554548.png"></ion-img>
+    </ion-avatar>
+    <ion-searchbar color="primary" placeholder="Search" class="small-searchbar" slot="end"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="container" *ngFor="let box of service.boxes">
+    <app-box [box]="box"></app-box>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add" (click)="clickCreateBox()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>
+

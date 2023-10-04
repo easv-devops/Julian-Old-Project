@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePage } from './home.page';
+import {CreateBoxComponent} from "../create-box/create-box.component";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomePage,
-  }
+    component: HomePage,},
+  {
+    path:'create-box',
+    component: CreateBoxComponent},
 ];
 
 @NgModule({
