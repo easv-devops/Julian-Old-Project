@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import {BoxComponent} from "../box/box.component";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 
 
@@ -14,7 +15,7 @@ import {BoxComponent} from "../box/box.component";
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
   ],
   declarations: [HomePage, BoxComponent]
 })

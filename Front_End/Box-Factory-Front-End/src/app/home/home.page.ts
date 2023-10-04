@@ -11,7 +11,7 @@ import {firstValueFrom} from "rxjs";
 export class HomePage {
 
   constructor(private http: HttpClient, public service: BoxService) {
-
+    this.getData();
   }
 
   async getData(){
@@ -19,6 +19,8 @@ export class HomePage {
     const result = await firstValueFrom<Box[]>(call);
     this.service.boxes = result;
   }
+
+
 
 
 }

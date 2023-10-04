@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Box} from "../home/home.page";
+import {HttpClient} from "@angular/common/http";
+import {firstValueFrom} from "rxjs";
+import {BoxService} from "../boxservice";
 
 @Component({
   selector: 'app-box',
@@ -7,7 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoxComponent  implements OnInit {
 
-  constructor() { }
+  @Input() box: Box | undefined;
+  constructor(private http: HttpClient, public service: BoxService) { }
 
   ngOnInit() {}
 
@@ -15,7 +20,9 @@ export class BoxComponent  implements OnInit {
 
   }
 
-  onDeleteClick() {
-
+  async onDeleteClick(box: Box | undefined) {
+    const call = this.http.delete('http://localhost:5054/api/boxes/'+ box?.id);
+    const result = await firstValueFrom(call);
+    this.service.boxes = this.service.boxes.filter(xbox => xbox.id != box?.id);
   }
 }
