@@ -3,6 +3,7 @@ import {Box} from "../home/home.page";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
 import {BoxService} from "../boxservice";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-box',
@@ -12,12 +13,12 @@ import {BoxService} from "../boxservice";
 export class BoxComponent  implements OnInit {
 
   @Input() box: Box | undefined;
-  constructor(private http: HttpClient, public service: BoxService) { }
+  constructor(private http: HttpClient, public service: BoxService, private router: Router) { }
 
   ngOnInit() {}
 
   onEditClick() {
-
+    this.router.navigate(["home/edit-box"])
   }
 
   async onDeleteClick(box: Box | undefined) {

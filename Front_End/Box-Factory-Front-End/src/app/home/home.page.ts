@@ -11,7 +11,6 @@ import {Router} from "@angular/router";
 })
 export class HomePage {
 
-
   constructor(private http: HttpClient, public service: BoxService, private router: Router) {
       this.getData();
   }
