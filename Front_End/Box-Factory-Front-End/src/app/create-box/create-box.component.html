@@ -1,6 +1,22 @@
-<ion-alert
-        trigger="present-alert"
-        header="Create Box Menu"
-        [buttons]="alertButtons"
-        [inputs]="alertInputs"
-></ion-alert>
+
+  <h2>Create Box</h2>
+  <form>
+    <label for="material">Material:</label>
+    <input type="text" id="material" [(ngModel)]="material" name="material">
+    <label for="width">Width:</label>
+    <input type="text" id="width" [(ngModel)]="width" name="width">
+    <label for="length">Length:</label>
+    <input type="text" id="length" [(ngModel)]="length" name="length">
+    <label for="height">Height:</label>
+    <input type="text" id="height" [(ngModel)]="height" name="height">
+    <label for="volume">Volume:</label>
+    <input type="text" id="volume" [(ngModel)]="volume" name="volume">
+    <label for="price">Price:</label>
+    <input type="text" id="price" [(ngModel)]="price" name="price">
+    <label for="inventory">Inventory:</label>
+    <input type="text" id="inventory" [(ngModel)]="inventory" name="inventory">
+    <button (click)="saveBox()">Save</button>
+  </form>
+
+
+

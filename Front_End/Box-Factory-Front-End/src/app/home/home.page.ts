@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
 import {firstValueFrom} from "rxjs";
 import {Router} from "@angular/router";
+import {ModalController, PopoverController} from "@ionic/angular";
+import {CreateBoxComponent} from "../create-box/create-box.component";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ import {Router} from "@angular/router";
 export class HomePage {
 
 
-  constructor(private http: HttpClient, public service: BoxService, private router: Router) {
+  constructor(private http: HttpClient, public service: BoxService, private router: Router, public popup: ModalController) {
       this.getData();
   }
 
@@ -22,8 +24,10 @@ export class HomePage {
     this.service.boxes = result;
   }
 
-  clickCreateBox() {
-    this.router.navigate(["home/create-box"])
+  async clickCreateBox() {
+    //this.router.navigate(["home/create-box"])
+    const popover = await this.popup.create({component: CreateBoxComponent})
+    popover.present();
   }
 }
 

@@ -7,17 +7,19 @@ import { HomePageRoutingModule } from './home-routing.module';
 import {BoxComponent} from "../box/box.component";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {CreateBoxComponent} from "../create-box/create-box.component";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HomePageRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HomePageRoutingModule,
+        HttpClientModule,
+        MatDialogModule
+    ],
   declarations: [HomePage, BoxComponent, CreateBoxComponent]
 })
 export class HomePageModule {}

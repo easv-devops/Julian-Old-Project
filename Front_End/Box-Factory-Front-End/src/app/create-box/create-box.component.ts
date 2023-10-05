@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-box',
@@ -6,29 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./create-box.component.scss'],
 })
 export class CreateBoxComponent{
-  constructor() { }
-  public alertButtons = ['OK'];
-  public alertInputs = [
-    {
-      placeholder: 'Material',
-    },
-    {
-      placeholder: 'Width',
-    },
-    {
-      placeholder: 'Length',
-    },
-    {
-      placeholder: 'Height',
-    },
-    {
-      placeholder: 'Volume'
-    },
-    {
-      placeholder: 'Price',
-    },
-    {
-      placeholder: 'Inventory'
-    }
-  ];
+
+  constructor(private dialog: MatDialog) { }
+
+  material: string = '';
+  width: number = 0;
+  length: number = 0;
+  height: number = 0;
+  volume: number = 0;
+  price: string = '';
+  inventory: number = 0;
+
+  saveBox() {
+
+  }
 }
