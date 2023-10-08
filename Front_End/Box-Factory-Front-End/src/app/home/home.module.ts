@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import {BoxComponent} from "../box/box.component";
@@ -12,14 +12,15 @@ import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
-        HomePageRoutingModule,
-        HttpClientModule,
-        MatDialogModule
-    ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    HttpClientModule,
+    MatDialogModule,
+    ReactiveFormsModule
+  ],
   declarations: [HomePage, BoxComponent, CreateBoxComponent]
 })
 export class HomePageModule {}
