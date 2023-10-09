@@ -1,3 +1,4 @@
+using FluentAssertions;
 using infrastructure;
 
 
@@ -5,13 +6,17 @@ namespace Tests;
 
     public class EditBoxTest {
   
-        private Repository repository;
+        private Repository _repository;
+   
+        Box retrievedBox = null;
     
         [SetUp]
         public void Setup()
         {
-            repository = new Repository();
+            _repository = new Repository();
+        
         }
+    
 
         [Test]
         public async Task ShouldSuccessfullyEditBook()
@@ -24,43 +29,30 @@ namespace Tests;
                 Volume = 1000,
                 Material = "Cardboard",
                 InventoryCount = 50,
-                Price = 25.99
+                Price = 25.99,
+                Name = "Test Boxxo"
             };
+            Box addedBox  = _repository.AddBox(boxToAdd);
+                
             Box boxToEdit = new Box
             {
+                Id = addedBox.Id,
                 Width = 100,
                 Length = 200,
                 Height = 50,
                 Volume = 10000,
-                Material = "Metal",
+                Material = "Fancy Cardboard",
                 InventoryCount = 500,
-                Price = 399
+                Price = 205.99,
+                Name = "Better Test Boxxo"
             };
-            repository.AddBox(boxToAdd);
-            try
-            {
-            repository.UpdateBox(boxToEdit);
             
-                        Box retrievedBox = repository.GetBoxById(boxToEdit.Id);
-                        Assert.NotNull(retrievedBox);
-                        Assert.That(retrievedBox.Width, Is.EqualTo(boxToEdit.Width));
-                        Assert.That(retrievedBox.Height, Is.EqualTo(boxToEdit.Height));
-                        Assert.That(retrievedBox.Length, Is.EqualTo(boxToEdit.Length));
-                        Assert.That(retrievedBox.Material,Is.EqualTo(boxToEdit.Material));
-                        Assert.That(retrievedBox.Price,Is.EqualTo(boxToEdit.Price));
-                        Assert.That(retrievedBox.InventoryCount,Is.EqualTo(boxToEdit.InventoryCount));
-                        Assert.That(retrievedBox.Volume,Is.EqualTo(boxToEdit.Volume));
-                        
-                        Assert.Fail("Edit doesn't work!");
-                        
-                        repository.DeleteBoxById(retrievedBox.Id);
-                        
-            }
-            catch (Exception e)
-            {
-                Assert.Fail("Edit doesn't work" + e);
-            }
-            
+            Box retrievedBox = _repository.UpdateBox(boxToEdit);
+
+            retrievedBox.Should().BeEquivalentTo(boxToEdit);
+            _repository.DeleteBoxById(retrievedBox.Id);
+            Assert.Pass("We did it!");
+        
         }
 
     }

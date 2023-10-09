@@ -1,14 +1,15 @@
+using FluentAssertions;
 using infrastructure;
 namespace Tests;
 
 public class DeleteBoxTest
 {
-    private Repository repository;
+    private Repository _repository;
 
     [SetUp]
     public void Setup()
     {
-        repository = new Repository();
+        _repository = new Repository();
     }
 
     [Test]
@@ -24,19 +25,12 @@ public class DeleteBoxTest
             InventoryCount = 50,
             Price = 25.99
         };
-        Box addedBox = repository.AddBox(boxToAdd);
-        
-        
-        try
-        { 
-            repository.DeleteBoxById(addedBox.Id);
-            repository.GetBoxById(addedBox.Id);
-            Assert.Pass("Delete works! Yay");
-        }
-        catch (Exception e)
-        {
-            Assert.Fail("Delete test failed" + e);
-        }
-        
+        Box addedBox = _repository.AddBox(boxToAdd);
+            _repository.DeleteBoxById(addedBox.Id);
+            
+            Assert.IsFalse(_repository.DeleteBoxById(addedBox.Id));
+            Assert.Pass("it works!");
+
+
     }
 }

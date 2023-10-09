@@ -32,7 +32,7 @@ public class Repository
 
     public Box GetBoxById(int boxId)
     {
-        var sql = $@"SELECT * FROM tables.boxes WHERE id = @id;";
+        var sql = $@"SELECT *, inventory_count as inventorycount FROM tables.boxes WHERE id = @id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
