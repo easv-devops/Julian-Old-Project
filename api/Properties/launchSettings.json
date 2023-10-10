@@ -18,7 +18,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "pgconn": "postgres://mrtfocdw:p90JE0wzhR6VnzlbboHfdCy7alQTX0tC@tai.db.elephantsql.com/mrtfocdw"
-      }
     },
     "https": {
       "commandName": "Project",
@@ -39,4 +38,5 @@
       }
     }
   }
+}
 }

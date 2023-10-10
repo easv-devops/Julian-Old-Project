@@ -15,6 +15,7 @@ export class HomePage {
 
 
   constructor(private http: HttpClient, public service: BoxService, private router: Router, public popup: ModalController) {
+
       this.getData();
   }
 

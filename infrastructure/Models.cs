@@ -10,4 +10,5 @@ public class Box
     public string Material { get; set; }
     public int InventoryCount { get; set; }
     public double Price { get; set; }
+    public string Name { get; set; }
 }
