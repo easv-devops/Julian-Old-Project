@@ -1,7 +1,12 @@
-<ion-card class="small-card">
-  <img src="https://us.123rf.com/450wm/yaydesign/yaydesign2004/yaydesign200400127/144211330-delivery-vector-image-shipping-fast-delivery-symbol.jpg?ver=6"/>
+<ion-card>
+  <img
+    src="https://img.freepik.com/premium-vector/three-different-size-boxes-isometric-vector-icon-illustration_658402-12.jpg"
+    height="200"
+    width="200"
+  />
   <ion-card-header>
-    <ion-card-title>{{box?.material}}</ion-card-title>
+    <ion-card-title>{{box?.name}}</ion-card-title>
+    <ion-card-subtitle>{{box?.material}}</ion-card-subtitle>
     <ion-card-subtitle>{{box?.length + ' x ' + box?.width + ' x ' + box?.height}}</ion-card-subtitle>
   </ion-card-header>
   <ion-card-content>

@@ -1,0 +1,19 @@
+.input-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.small-input {
+  width: 20%;
+}
+
+.normal-input {
+  width: 50%;
+}
+
+.button{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

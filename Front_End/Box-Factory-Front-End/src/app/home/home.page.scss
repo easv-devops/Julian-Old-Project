@@ -1,6 +1,9 @@
 .container {
   margin-top: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
   display: inline-block;
+  box-sizing: border-box;
 }
 
 .bottom-right {

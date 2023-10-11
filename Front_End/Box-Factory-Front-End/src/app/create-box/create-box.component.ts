@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
@@ -10,7 +10,7 @@ import {Box} from "../home/home.page";
   templateUrl: './create-box.component.html',
   styleUrls: ['./create-box.component.scss'],
 })
-export class CreateBoxComponent{
+export class CreateBoxComponent {
   nameInput = new FormControl('', Validators.required);
   materialInput = new FormControl('', Validators.required);
   widthInput = new FormControl('', Validators.required);
@@ -32,8 +32,13 @@ export class CreateBoxComponent{
   });
 
 
-  constructor(private dialog: MatDialog, private http: HttpClient, private service: BoxService ) {
+  constructor(private dialog: MatDialog, private http: HttpClient, public service: BoxService ) {
+    if(service.getIsEditingTrue()){
+      this.autoFill(service.getBox());
+    }
   }
+
+
   clickSave() {
     if(!this.service.getIsEditingTrue()){
       this.createBox();
@@ -41,6 +46,7 @@ export class CreateBoxComponent{
     else{
       this.editBox();
     }
+    this.dialog.closeAll();
   }
 
   createBox(){
