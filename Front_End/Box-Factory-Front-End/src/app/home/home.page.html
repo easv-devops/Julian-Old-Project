@@ -3,12 +3,12 @@
     <ion-avatar slot="start">
       <ion-img src="https://cdn-icons-png.flaticon.com/512/1554/1554548.png"></ion-img>
     </ion-avatar>
-    <ion-searchbar color="primary" placeholder="Search" class="small-searchbar" slot="end"></ion-searchbar>
+    <ion-searchbar (ionChange)="filterResults($event)" color="primary" placeholder="Search" class="small-searchbar" slot="end"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="container" *ngFor="let box of service.boxes">
+  <div class="container" *ngFor="let box of filteredBoxesList">
     <app-box [box]="box"></app-box>
   </div>
 

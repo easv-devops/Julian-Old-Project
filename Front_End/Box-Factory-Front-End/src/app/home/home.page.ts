@@ -13,10 +13,14 @@ import {CreateBoxComponent} from "../create-box/create-box.component";
 })
 export class HomePage {
 
+  boxesList: Box[] = [];
+  filteredBoxesList: Box[] = [];
 
   constructor(private http: HttpClient, public service: BoxService, private router: Router, public popup: ModalController) {
-
-      this.getData();
+      this.service.getData().then((boxesList: Box[])=>{
+        this.boxesList = boxesList;
+        this.filteredBoxesList = boxesList;
+      });
   }
 
   async getData() {
@@ -30,6 +34,20 @@ export class HomePage {
     const popover = await this.popup.create({component: CreateBoxComponent})
     popover.present();
   }
+
+  filterResults(event: Event){
+    const customEvent = event as CustomEvent;
+    const text: string = customEvent.detail.value as string;
+    if(!text){
+      this.filteredBoxesList = this.boxesList;
+
+    }else{
+      this.filteredBoxesList = this.boxesList.filter(
+        boxName =>
+          boxName?.name.toLowerCase().includes(text.toLowerCase())
+      );
+    }
+  }
 }
 
 export interface Box{
@@ -40,5 +58,6 @@ export interface Box{
   volume: number,
   material: string,
   inventoryCount: number,
-  price: number
+  price: number,
+  name: string
 }
