@@ -26,6 +26,7 @@ export class HomePage {
 
   async clickCreateBox() {
     //this.router.navigate(["home/create-box"])
+    this.service.setIsEditingTrue(false);
     const popover = await this.popup.create({component: CreateBoxComponent})
     popover.present();
   }
@@ -33,6 +34,7 @@ export class HomePage {
 
 export interface Box{
   id: number,
+  name: string,
   width: number,
   length: number,
   height: number,

@@ -3,6 +3,8 @@ import {Box} from "../home/home.page";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
 import {BoxService} from "../boxservice";
+import {CreateBoxComponent} from "../create-box/create-box.component";
+import {ModalController} from "@ionic/angular";
 
 @Component({
   selector: 'app-box',
@@ -12,12 +14,16 @@ import {BoxService} from "../boxservice";
 export class BoxComponent  implements OnInit {
 
   @Input() box: Box | undefined;
-  constructor(private http: HttpClient, public service: BoxService) { }
+  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController) { }
 
   ngOnInit() {}
 
-  onEditClick() {
-
+  async onEditClick(box: Box | undefined) {
+    this.service.setBox(box);
+    this.service.setIsEditingTrue(true);
+    console.log(box);
+    const popover = await this.popup.create({component: CreateBoxComponent})
+    popover.present();
   }
 
   async onDeleteClick(box: Box | undefined) {

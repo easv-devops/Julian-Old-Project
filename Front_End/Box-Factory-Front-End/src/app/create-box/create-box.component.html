@@ -1,5 +1,7 @@
 <h2>Create Box</h2>
   <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [formControl]="nameInput">
     <label for="material">Material:</label>
     <input type="text" id="material" [formControl]="materialInput">
     <label for="width">Width:</label>
@@ -14,7 +16,7 @@
     <input type="text" id="price" [formControl]="priceInput">
     <label for="inventory">Inventory:</label>
     <input type="text" id="inventory" [formControl]="inventoryInput">
-    <button (click)="createBox()">Save</button>
+    <ion-button [disabled]="formGroup.invalid" (click)="clickSave()">Save</ion-button>
   </form>
 
 
