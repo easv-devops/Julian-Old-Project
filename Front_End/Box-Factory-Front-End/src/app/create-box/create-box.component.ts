@@ -3,6 +3,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
+import {Box} from "../home/home.page";
 
 @Component({
   selector: 'app-create-box',
@@ -67,5 +68,16 @@ export class CreateBoxComponent{
           console.log(box);
         }
       );
+  }
+
+  async autoFill(box: Box | undefined){
+
+    this.nameInput.setValue(box?.name || '');
+    this.materialInput.setValue(box?.material || '');
+    this.widthInput.setValue(box?.width?.toString() || '');
+    this.lengthInput.setValue(box?.length?.toString() || '');
+    this.volumeInput.setValue(box?.volume?.toString() || '');
+    this.priceInput.setValue(box?.price?.toString() || '');
+    this.inventoryInput.setValue(box?.inventoryCount?.toString() || '');
   }
 }

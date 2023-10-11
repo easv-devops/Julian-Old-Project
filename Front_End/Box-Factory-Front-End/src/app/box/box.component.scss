@@ -1,7 +1,5 @@
 .small-card {
   width: 20%;
-  flex: 1;
-  max-width: calc(33.33% - 20px);
   margin: 10px;
   position: relative; /* Ensure relative positioning for the card */
 }
@@ -14,7 +12,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end; /* Use flex-end to push icons to the right */
-  z-index: 1; /* Ensure icons appear above other content */
 }
 
 .action-icon {

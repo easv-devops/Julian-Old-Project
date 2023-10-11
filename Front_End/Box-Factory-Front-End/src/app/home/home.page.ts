@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
 import {firstValueFrom} from "rxjs";
 import {Router} from "@angular/router";
-import {ModalController, PopoverController} from "@ionic/angular";
+import {ModalController} from "@ionic/angular";
 import {CreateBoxComponent} from "../create-box/create-box.component";
 
 @Component({
@@ -14,7 +14,7 @@ import {CreateBoxComponent} from "../create-box/create-box.component";
 export class HomePage {
 
 
-  constructor(private http: HttpClient, public service: BoxService, private router: Router, public popup: ModalController) {
+  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController) {
       this.getData();
   }
 
