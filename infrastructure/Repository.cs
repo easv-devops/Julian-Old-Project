@@ -7,8 +7,8 @@ public class Repository
 {
     public Box AddBox(Box box)
     {
-        var sql = $@"INSERT INTO tables.boxes(width, length, height, volume, material, inventory_count, price)
-                        VALUES(@width, @length, @height, @volume, @material, @inventorycount, @price)
+        var sql = $@"INSERT INTO tables.boxes(width, length, height, volume, material, inventory_count, price, name)
+                        VALUES(@width, @length, @height, @volume, @material, @inventorycount, @price, @name)
                         RETURNING
                         id as {nameof(Box.Id)},
                         width as {nameof(Box.Width)},
@@ -17,14 +17,15 @@ public class Repository
                         volume as {nameof(Box.Volume)},
                         material as {nameof(Box.Material)},
                         inventory_count as {nameof(Box.InventoryCount)},
-                        price as {nameof(Box.Price)};";
+                        price as {nameof(Box.Price)},
+                        name as {nameof(Box.Name)};";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
             return conn.QueryFirst<Box>(sql, new
             {
                 width = box.Width, length = box.Length, height = box.Height, volume = box.Volume,
-                material = box.Material, inventorycount = box.InventoryCount, price = box.Price
+                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, name= box.Name
             });
         }
     }
@@ -63,7 +64,7 @@ public class Repository
     {
         var sql = $@"UPDATE tables.boxes
                         SET width=@width, length=@length, height=@height, volume=@volume,
-                            material=@material, inventory_count=@inventorycount, price=@price 
+                            material=@material, inventory_count=@inventorycount, price=@price, name=@name 
                         WHERE id=@id
                         RETURNING
                         id as {nameof(Box.Id)},
@@ -73,14 +74,15 @@ public class Repository
                         volume as {nameof(Box.Volume)},
                         material as {nameof(Box.Material)},
                         inventory_count as {nameof(Box.InventoryCount)},
-                        price as {nameof(Box.Price)};";
+                        price as {nameof(Box.Price)},
+                        name as {nameof(Box.Name)};";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
             return conn.QueryFirst<Box>(sql, new
             {
                 width = box.Width, length = box.Length, height = box.Height, volume = box.Volume,
-                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, id = box.Id
+                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, id = box.Id, name=box.Name
             });
         }
     }
@@ -88,7 +90,7 @@ public class Repository
     public IEnumerable<Box> SearchForBox(string query)
     {
         var sql = $@"SELECT * FROM tables.boxes 
-                        WHERE LOWER(material) LIKE '%' || @query || '%'
+                        WHERE LOWER(name) LIKE '%' || @query || '%'
                         ORDER BY id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())

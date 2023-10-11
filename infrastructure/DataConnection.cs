@@ -39,6 +39,9 @@ public static class DataConnection
         }
         catch (Exception e)
         {
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.InnerException);
+            Console.WriteLine(e.StackTrace);
             throw new Exception("Connection string found but could not be formatted correctly!");
         }
         
