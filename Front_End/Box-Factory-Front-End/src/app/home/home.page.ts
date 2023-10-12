@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
 import {firstValueFrom} from "rxjs";
 import {Router} from "@angular/router";
-import {ModalController} from "@ionic/angular";
+import {ModalController, ToastController} from "@ionic/angular";
 import {CreateBoxComponent} from "../create-box/create-box.component";
 
 @Component({
@@ -17,7 +17,7 @@ export class HomePage {
   filteredBoxesList: Box[] = [];
 
 
-  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController) {
+  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController, public toastController: ToastController) {
       this.service.getData().then((boxesList: Box[])=>{
         this.boxesList = boxesList;
         this.filteredBoxesList = boxesList;

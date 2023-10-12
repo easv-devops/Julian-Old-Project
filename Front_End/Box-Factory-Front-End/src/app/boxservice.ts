@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Box} from "./home/home.page";
-import {firstValueFrom} from "rxjs";
+import {firstValueFrom, Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,16 @@ export class BoxService{
   boxes: Box[] = [];
   private isEditingTrue: boolean = false;
   private box: Box | undefined;
+
+  private toastSubject = new Subject<string>();
+
+  showToast(message: string) {
+    this.toastSubject.next(message);
+  }
+
+  getToast(): Observable<string> {
+    return this.toastSubject.asObservable();
+  }
 
   getIsEditingTrue(): boolean {
     return this.isEditingTrue;
