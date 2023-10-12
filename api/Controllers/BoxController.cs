@@ -31,8 +31,9 @@ public class BoxController : ControllerBase
   
     [Route("/api/boxes/{boxid}")]
     [HttpPut]
-    public Box EditBox([FromBody] Box box)
+    public Box EditBox([FromBody] Box box, [FromRoute]int boxid)
     {
+        box.Id = boxid;
         return _service.EditBox(box);
     }
   

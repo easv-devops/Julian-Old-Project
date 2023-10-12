@@ -25,7 +25,8 @@ public class Repository
             return conn.QueryFirst<Box>(sql, new
             {
                 width = box.Width, length = box.Length, height = box.Height, volume = box.Volume,
-                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, name = box.Name
+                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, name= box.Name
+
             });
         }
     }
@@ -82,7 +83,7 @@ public class Repository
             return conn.QueryFirst<Box>(sql, new
             {
                 width = box.Width, length = box.Length, height = box.Height, volume = box.Volume,
-                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, id = box.Id, name= box.Name
+                material = box.Material, inventorycount = box.InventoryCount, price = box.Price, id = box.Id, name=box.Name
             });
         }
     }
