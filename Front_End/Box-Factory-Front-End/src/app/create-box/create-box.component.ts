@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
 import {Box} from "../home/home.page";
+import {ToastController} from "@ionic/angular";
 
 @Component({
   selector: 'app-create-box',
@@ -32,11 +33,23 @@ export class CreateBoxComponent {
   });
 
 
-  constructor(private dialog: MatDialog, private http: HttpClient, public service: BoxService) {
+  constructor(private dialog: MatDialog, private http: HttpClient, public service: BoxService, private toastController: ToastController) {
     if(service.getIsEditingTrue()){
       this.autoFill(service.getBox());
     }
+    this.service.getToast().subscribe((message) => {
+      this.toastController
+        .create({
+          message: message,
+          duration: 2000,
+          position: 'bottom',
+        })
+        .then((toast) => {
+          toast.present();
+        });
+    });
   }
+
 
 
   clickSave() {
@@ -46,6 +59,7 @@ export class CreateBoxComponent {
     else{
       this.editBox();
     }
+    this.dialog.closeAll();
   }
 
   createBox(){
@@ -59,7 +73,6 @@ export class CreateBoxComponent {
 
         (error) => {
           console.error('Error creating box', error);
-          window.location.reload();
           this.service.showToast('Task failed');
         }
       );
@@ -71,14 +84,13 @@ export class CreateBoxComponent {
       .subscribe(
         (response) => {
           console.log('Box edited successfully', response);
-          window.location.reload();
           this.service.showToast('Box edited successfully');
+          window.location.reload();
         },
         (error) => {
           console.error('Error editing box', error);
           console.log(this.formGroup.value);
           console.log(box);
-          window.location.reload();
           this.service.showToast('Task failed');
         }
       );
@@ -90,6 +102,7 @@ export class CreateBoxComponent {
     this.materialInput.setValue(box?.material || '');
     this.widthInput.setValue(box?.width?.toString() || '');
     this.lengthInput.setValue(box?.length?.toString() || '');
+    this.heightInput.setValue(box?.height?.toString() || '');
     this.volumeInput.setValue(box?.volume?.toString() || '');
     this.priceInput.setValue(box?.price?.toString() || '');
     this.inventoryInput.setValue(box?.inventoryCount?.toString() || '');

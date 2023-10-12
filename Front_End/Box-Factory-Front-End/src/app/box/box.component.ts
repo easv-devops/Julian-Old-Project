@@ -19,7 +19,19 @@ export class BoxComponent  implements OnInit {
 
   @Input() box: Box | undefined;
 
-  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController, private alertController: AlertController, public toastController: ToastController) { }
+  constructor(private http: HttpClient, public service: BoxService, public popup: ModalController, private alertController: AlertController, public toastController: ToastController) {
+    this.service.getToast().subscribe((message) => {
+      this.toastController
+        .create({
+          message: message,
+          duration: 2000,
+          position: 'bottom',
+        })
+        .then((toast) => {
+          toast.present();
+        });
+    });
+  }
 
   ngOnInit() {}
 
@@ -59,6 +71,7 @@ export class BoxComponent  implements OnInit {
     call.subscribe((result) => {
       this.service.boxes = this.service.boxes.filter((xbox) => xbox.id != box?.id);
       this.service.showToast('Box deleted successfully');
+        window.location.reload();
     });
   }
 }

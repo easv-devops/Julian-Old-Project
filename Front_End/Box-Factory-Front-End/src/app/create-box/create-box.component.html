@@ -1,39 +1,39 @@
 <mat-dialog-content>
-  <h2>{{ service.getIsEditingTrue() ? 'Edit Box' : 'Create Box' }}</h2>
+  <h2 style="margin-left: 20px">{{ service.getIsEditingTrue() ? 'Edit Box' : 'Create Box' }}</h2>
   <ion-button (click)="clickCancel()" class="button2">Cancel</ion-button>
   <br>
   <form>
     <div class="input-row">
       <label for="name">Name:</label>
-      <input type="text" id="name" [formControl]="nameInput" class="normal-input">
+      <input type="text" id="name" [formControl]="nameInput" class="normal-input text-input">
     </div>
     <div class="input-row">
       <label for="material">Material:</label>
-      <input type="text" id="material" [formControl]="materialInput" class="normal-input">
+      <input type="text" id="material" [formControl]="materialInput" class="normal-input text-input">
     </div>
     <div class="input-row">
       <label for="width">Width:</label>
-      <input type="text" id="width" [formControl]="widthInput" class="small-input">
+      <input type="text" id="width" [formControl]="widthInput" class="small-input text-input">
     </div>
     <div class="input-row">
       <label for="length">Length:</label>
-      <input type="text" id="length" [formControl]="lengthInput" class="small-input">
+      <input type="text" id="length" [formControl]="lengthInput" class="small-input text-input">
     </div>
     <div class="input-row">
       <label for="height">Height:</label>
-      <input type="text" id="height" [formControl]="heightInput" class="small-input">
+      <input type="text" id="height" [formControl]="heightInput" class="small-input text-input">
     </div>
     <div class="input-row">
       <label for="volume">Volume:</label>
-      <input type="text" id="volume" [formControl]="volumeInput" class="small-input">
+      <input type="text" id="volume" [formControl]="volumeInput" class="small-input text-input">
     </div>
     <div class="input-row">
       <label for="price">Price:</label>
-      <input type="text" id="price" [formControl]="priceInput" class="small-input">
+      <input type="text" id="price" [formControl]="priceInput" class="small-input text-input">
     </div>
     <div class="input-row">
       <label for="inventory">Inventory:</label>
-      <input type="text" id="inventory" [formControl]="inventoryInput" class="small-input">
+      <input type="text" id="inventory" [formControl]="inventoryInput" class="small-input text-input">
     </div>
     <ion-button [disabled]="formGroup.invalid" (click)="clickSave()" class="button">Save</ion-button>
   </form>
