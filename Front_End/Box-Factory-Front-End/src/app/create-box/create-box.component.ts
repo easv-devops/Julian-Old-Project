@@ -32,7 +32,7 @@ export class CreateBoxComponent {
   });
 
 
-  constructor(private dialog: MatDialog, private http: HttpClient, public service: BoxService ) {
+  constructor(private dialog: MatDialog, private http: HttpClient, public service: BoxService) {
     if(service.getIsEditingTrue()){
       this.autoFill(service.getBox());
     }
@@ -46,8 +46,6 @@ export class CreateBoxComponent {
     else{
       this.editBox();
     }
-    this.dialog.closeAll();
-    window.location.reload();
   }
 
   createBox(){
@@ -55,9 +53,14 @@ export class CreateBoxComponent {
       .subscribe(
         (response) => {
           console.log('Box created successfully', response);
+          window.location.reload();
+          this.service.showToast('Box created successfully');
         },
+
         (error) => {
           console.error('Error creating box', error);
+          window.location.reload();
+          this.service.showToast('Task failed');
         }
       );
   }
@@ -68,11 +71,15 @@ export class CreateBoxComponent {
       .subscribe(
         (response) => {
           console.log('Box edited successfully', response);
+          window.location.reload();
+          this.service.showToast('Box edited successfully');
         },
         (error) => {
           console.error('Error editing box', error);
           console.log(this.formGroup.value);
           console.log(box);
+          window.location.reload();
+          this.service.showToast('Task failed');
         }
       );
   }

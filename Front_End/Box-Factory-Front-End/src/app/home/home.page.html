@@ -1,9 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-avatar slot="start">
+    <ion-avatar slot="start" class="icon-avatar">
       <ion-img src="https://cdn-icons-png.flaticon.com/512/1554/1554548.png"></ion-img>
     </ion-avatar>
     <ion-button name="add" class="button" (click)="clickCreateBox()">Create Box</ion-button>
+    <ion-label class="icon-text">Box Factory</ion-label>
     <ion-searchbar (ionChange)="filterResults($event)" color="primary" placeholder="Search" class="small-searchbar" slot="end"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
