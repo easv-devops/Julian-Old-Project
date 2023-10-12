@@ -10,7 +10,7 @@ public class PlaywrightTests : PageTest
     [Test]
     public async Task CreateBoxExists()
     {
-        await Page.GotoAsync("http://localhost:5054/home");
+        await Page.GotoAsync("http://localhost:5054/home", new PageGotoOptions{Timeout = 15000});
         var createButton = Page.GetByRole(AriaRole.Button, new() { Name = "Create Box" });
         await createButton.ClickAsync();
         var nameInput = Page.GetByLabel("Name");
