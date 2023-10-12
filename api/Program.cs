@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var frontEndRelativePath = "../Front_end/Box-Factory-Front-End/www";
+builder.Services.AddSpaStaticFiles(conf => conf.RootPath = frontEndRelativePath);
 
 var app = builder.Build();
 
@@ -29,10 +31,9 @@ app.UseCors(options =>
         .AllowAnyHeader()
         .AllowCredentials();
 });
+app.UseSpaStaticFiles();
 
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseSpa(conf => { conf.Options.SourcePath = frontEndRelativePath; });
 
 app.MapControllers();
 

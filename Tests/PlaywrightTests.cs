@@ -10,7 +10,7 @@ public class PlaywrightTests : PageTest
     [Test]
     public async Task CreateBoxExists()
     {
-        await Page.GotoAsync("http://localhost:4200/home");
+        await Page.GotoAsync("http://localhost:5054/home", new PageGotoOptions{Timeout = 15000});
         var createButton = Page.GetByRole(AriaRole.Button, new() { Name = "Create Box" });
         await createButton.ClickAsync();
         var nameInput = Page.GetByLabel("Name");
@@ -28,9 +28,9 @@ public class PlaywrightTests : PageTest
         var heightInput = Page.GetByLabel("Height");
         await heightInput.ClickAsync();
         await heightInput.FillAsync("23");
-        var VolumeInput = Page.GetByLabel("Volume");
-        await VolumeInput.ClickAsync();
-        await VolumeInput.FillAsync("23");
+        var volumeInput = Page.GetByLabel("Volume");
+        await volumeInput.ClickAsync();
+        await volumeInput.FillAsync("23");
         var priceInput = Page.GetByLabel("Price");
         await priceInput.ClickAsync();
         await priceInput.FillAsync("23");
@@ -40,7 +40,7 @@ public class PlaywrightTests : PageTest
         var saveButton = Page.GetByRole(AriaRole.Button, new() { Name = "Save" });
         await saveButton.ClickAsync();
         
-        await Page.GotoAsync("http://localhost:4200/home", new PageGotoOptions{Timeout = 15000});
+        await Page.GotoAsync("http://localhost:5054/home", new PageGotoOptions{Timeout = 15000});
 
         var createdBox =   Page.GetByRole(AriaRole.Heading, new() { Name = "aaaaaa" });
 
