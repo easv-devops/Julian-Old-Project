@@ -62,5 +62,4 @@ export interface Box{
   material: string,
   inventoryCount: number,
   price: number,
-  name: string
 }

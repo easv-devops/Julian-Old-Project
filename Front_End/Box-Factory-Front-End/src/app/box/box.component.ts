@@ -29,8 +29,7 @@ export class BoxComponent  implements OnInit {
     console.log(box);
     const popover = await this.popup.create({component: CreateBoxComponent})
     popover.present();
-
-  
+  }
 
   async onDeleteClick(box: Box | undefined) {
     const call = this.http.delete('http://localhost:5054/api/boxes/'+ box?.id);

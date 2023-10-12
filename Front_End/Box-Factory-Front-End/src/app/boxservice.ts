@@ -25,7 +25,7 @@ export class BoxService{
 
   setBox(newBox: Box | undefined): void {
     this.box = newBox;
-
+  }
   constructor() {
   }
 
