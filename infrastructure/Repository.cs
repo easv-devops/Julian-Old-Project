@@ -53,7 +53,8 @@ public class Repository
     
     public IEnumerable<Box> GetAllBoxes()
     {
-        var sql = $@"SELECT *, inventory_count as InventoryCount FROM tables.boxes;";
+        var sql = $@"SELECT *, inventory_count as InventoryCount FROM tables.boxes
+                        ORDER BY name;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
