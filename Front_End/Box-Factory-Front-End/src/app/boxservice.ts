@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Box} from "./home/home.page";
+import {firstValueFrom} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,8 @@ import {Box} from "./home/home.page";
 
 export class BoxService{
   boxes: Box[] = [];
-
   private isEditingTrue: boolean = false;
+  private box: Box | undefined;
 
   getIsEditingTrue(): boolean {
     return this.isEditingTrue;
@@ -18,13 +19,19 @@ export class BoxService{
     this.isEditingTrue = value;
   }
 
-  private box: Box | undefined;
-
   getBox(): Box | undefined {
     return this.box;
   }
 
   setBox(newBox: Box | undefined): void {
     this.box = newBox;
+
+  constructor() {
+  }
+
+  async getData(): Promise<Box[]> {
+    const data = await fetch('http://localhost:5054/api/inventory');
+    return await data.json() ?? [];
+
   }
 }

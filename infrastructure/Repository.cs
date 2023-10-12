@@ -26,13 +26,14 @@ public class Repository
             {
                 width = box.Width, length = box.Length, height = box.Height, volume = box.Volume,
                 material = box.Material, inventorycount = box.InventoryCount, price = box.Price, name= box.Name
+
             });
         }
     }
 
     public Box GetBoxById(int boxId)
     {
-        var sql = $@"SELECT * FROM tables.boxes WHERE id = @id;";
+        var sql = $@"SELECT *, inventory_count as inventorycount FROM tables.boxes WHERE id = @id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
@@ -46,13 +47,13 @@ public class Repository
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
-            return conn.Execute(sql, new { boxId }) == 1;
+            return conn.Execute(sql, new { id = boxId }) == 1;
         }
     }
     
     public IEnumerable<Box> GetAllBoxes()
     {
-        var sql = $@"SELECT * FROM tables.boxes;";
+        var sql = $@"SELECT *, inventory_count as InventoryCount FROM tables.boxes;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
