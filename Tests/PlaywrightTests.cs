@@ -28,9 +28,9 @@ public class PlaywrightTests : PageTest
         var heightInput = Page.GetByLabel("Height");
         await heightInput.ClickAsync();
         await heightInput.FillAsync("23");
-        var VolumeInput = Page.GetByLabel("Volume");
-        await VolumeInput.ClickAsync();
-        await VolumeInput.FillAsync("23");
+        var volumeInput = Page.GetByLabel("Volume");
+        await volumeInput.ClickAsync();
+        await volumeInput.FillAsync("23");
         var priceInput = Page.GetByLabel("Price");
         await priceInput.ClickAsync();
         await priceInput.FillAsync("23");
