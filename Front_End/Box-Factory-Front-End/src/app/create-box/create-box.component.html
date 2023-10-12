@@ -1,5 +1,7 @@
 <mat-dialog-content>
   <h2>{{ service.getIsEditingTrue() ? 'Edit Box' : 'Create Box' }}</h2>
+  <ion-button (click)="clickCancel()" class="button2">Cancel</ion-button>
+  <br>
   <form>
     <div class="input-row">
       <label for="name">Name:</label>

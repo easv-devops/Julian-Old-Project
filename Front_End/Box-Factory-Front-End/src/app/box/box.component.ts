@@ -35,5 +35,6 @@ export class BoxComponent  implements OnInit {
     const call = this.http.delete('http://localhost:5054/api/boxes/'+ box?.id);
     const result = await firstValueFrom(call);
     this.service.boxes = this.service.boxes.filter(xbox => xbox.id != box?.id);
+    window.location.reload();
   }
 }

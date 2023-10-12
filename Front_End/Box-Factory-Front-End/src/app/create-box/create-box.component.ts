@@ -47,6 +47,7 @@ export class CreateBoxComponent {
       this.editBox();
     }
     this.dialog.closeAll();
+    window.location.reload();
   }
 
   createBox(){
@@ -85,5 +86,9 @@ export class CreateBoxComponent {
     this.volumeInput.setValue(box?.volume?.toString() || '');
     this.priceInput.setValue(box?.price?.toString() || '');
     this.inventoryInput.setValue(box?.inventoryCount?.toString() || '');
+  }
+
+  clickCancel() {
+    window.location.reload();
   }
 }
