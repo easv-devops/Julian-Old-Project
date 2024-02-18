@@ -20,4 +20,9 @@ public class DeleteBoxTest
         Assert.Pass();
 
     }
+
+    public async Task TestForPurpose()
+    {
+        Assert.Pass();
+    }
 }
