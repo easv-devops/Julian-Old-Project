@@ -1,0 +1,11 @@
+kind: pipeline
+type: docker
+name: integration
+
+steps:
+  - name: code-analysis
+    image: boulundeasv/dotnet-sdk-with-java
+    commands:
+      - dotnet sonarscanner begin /k:"easv-devops_Julian-Old-Project_AY2-c-wYEVvRW2O60EDs" /d:sonar.host.url="http://sonar.setgo.dk:9000"  /d:sonar.token="sqp_f21da017589947eb7bebf0a03634071e298299d4"
+      - dotnet build
+      - dotnet sonarscanner end /d:sonar.token="sqp_f21da017589947eb7bebf0a03634071e298299d4"
